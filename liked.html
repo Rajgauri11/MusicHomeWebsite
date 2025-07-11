@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liked Songs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #444;
+            text-align: left;
+        }
+        th {
+            background-color: #1f1f1f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Liked Songs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Play</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody id="liked-songs-list">
+            <!-- Dynamically generated liked songs will appear here -->
+        </tbody>
+    </table>
+
+    <script>
+   let currentAudio = null; // Tracks the currently playing audio
+let currentPlayingIndex = null; // Tracks the index of the currently playing song
+
+// Function to play or pause a song
+function togglePlayPause(songIndex, buttonElement) {
+    const favorites = JSON.parse(localStorage.getItem('likedSong')) || [];
+
+    // Stop and reset the current audio if a different song is clicked
+    if (currentAudio && currentPlayingIndex !== songIndex) {
+        currentAudio.pause();
+        currentAudio = null;
+        const prevButton = document.querySelector(`button[data-index="${currentPlayingIndex}"]`);
+        if (prevButton) prevButton.textContent = "Play";
+    }
+
+    // Get the song details
+    const song = favorites[songIndex];
+
+    if (!currentAudio) {
+        // Create a new audio object if no audio is currently playing
+        currentAudio = new Audio(song.src);
+        currentAudio.play();
+        buttonElement.textContent = "Pause";
+        currentPlayingIndex = songIndex;
+    } else if (currentAudio.paused) {
+        // Resume playback if the audio is paused
+        currentAudio.play();
+        buttonElement.textContent = "Pause";
+    } else {
+        // Pause playback if the audio is playing
+        currentAudio.pause();
+        buttonElement.textContent = "Play";
+    }
+
+    // Handle end of playback
+    currentAudio.onended = () => {
+        buttonElement.textContent = "Play";
+        currentAudio = null;
+        currentPlayingIndex = null;
+    };
+}
+
+// Function to remove a song from the favorites
+function removeSong(songIndex) {
+    let favorites = JSON.parse(localStorage.getItem('likedSong')) || [];
+    favorites.splice(songIndex, 1); // Remove the song at the specified index
+    localStorage.setItem('likedSong', JSON.stringify(favorites)); // Update localStorage
+
+    // Stop the current song if it is being removed
+    if (songIndex === currentPlayingIndex && currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+        currentPlayingIndex = null;
+    }
+
+    displayFavorites(); // Refresh the list
+}
+
+// Function to display the list of liked songs
+function displayFavorites() {
+    const favorites = JSON.parse(localStorage.getItem('likedSong')) || [];
+    const likedSongsList = document.getElementById('liked-songs-list');
+    likedSongsList.innerHTML = ''; // Clear current list
+
+    if (favorites.length === 0) {
+        likedSongsList.innerHTML = `<tr><td colspan="6">No songs in favorites.</td></tr>`;
+    } else {
+        favorites.forEach((song, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${song.title}</td>
+                <td>${song.artist}</td>
+                <td>
+                    <button data-index="${index}" onclick="togglePlayPause(${index}, this)">Play</button>
+                </td>
+                <td>
+                    <button onclick="removeSong(${index})">Remove</button>
+                </td>
+            `;
+            likedSongsList.appendChild(row);
+        });
+    }
+}
+
+// On page load, display the list of favorite songs
+window.addEventListener('DOMContentLoaded', function() {
+    displayFavorites();
+});
+
+
+    </script>
+</body>
+</html>

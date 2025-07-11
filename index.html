@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="shortcut icon" href="girl4.avif" type="image/x-icon">
+    <title>MUSIC HOME</title>
+</head>
+<body>
+    <div class="music1">
+        <div class="musicPage">
+            <nav class="smallnav">
+                <div class="navbar">
+                  <img src="girl4.avif" alt="" height="30px" width="30px">
+                    <h1>MUSIC HOME</h1>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li>HOME</li>
+                        <!-- <li>MY LIBRARY</li> -->
+                    </ul>
+                    <div class="search-container">
+                      
+                        <input type="text" id="search-box"  placeholder="Search Music">
+                        <i class="bi bi-search" id="search-icon"></i>
+                        <div id="searchResults" class="search-results"></div>
+                    </div>
+                 <a href="login_page.html">  <button class="btn1">LOG OUT</button></a>
+                </div>
+            </nav>    
+        </div>
+
+         <!-- Sidebar Part -->
+
+      <div class="main">
+        <div class="sidebar">
+            <div class="sideMenu">
+              <h4 class="tab-button active" data-tab="playlist-Menu">
+                <i class="bi bi-music-note-beamed"></i> PlayList
+            </h4>
+            <h4 class="tab-button" data-tab="lastListening">
+                <i class="bi bi-clock-history" ></i> Last Listening
+            </h4>
+            <h4 class="tab-button" data-tab="recommended">
+                <i class="bi bi-star"></i> Recommended
+            </h4>
+            </div>
+
+            <div class="song-lists">
+            <!-- playlist of sidebar -->
+
+            <div class="playlist-Menu song-list active">
+              <div class="song-item" data-id="1">
+                  <span class="song-number">01</span>
+                  <img src="./img/16.jpeg" alt="Tere Liye">
+                  <div class="song-info">
+                    <h5>Jeene Laga Hoon</h5>
+                    <p>Atif Aslam</p>
+                  </div>
+                  <i class="bx playListPlay bx-play-circle play-icon"></i>
+                </div>
+                <div class="song-item" data-id="2">
+                    <span class="song-number">02</span>
+                    <img src="./img/2.jpeg" alt="Tere Liye">
+                    <div class="song-info">
+                      <h5>Abhi Mujh Mein Kahin</h5>
+                      <p>Sonu Nigam</p>
+                    </div>
+                    <i class="bx playListPlay bx-play-circle play-icon"></i>
+                  </div>
+                  <div class="song-item">
+                    <span class="song-number">03</span>
+                    <img src="./img/3.jpeg" alt="Tere Liye">
+                    <div class="song-info">
+                      <h5>Ajab Si</h5>
+                      <p>KK</p>
+                    </div>
+                    <i class="bx playListPlay bx-play-circle play-icon" id="3"></i>
+                  </div>
+                  <div class="song-item">
+                    <span class="song-number">04</span>
+                    <img src="./img/4.jpeg" alt="Tere Liye">
+                    <div class="song-info">
+                      <h5>Allah Maaf Kare</h5>
+                      <p>Pritam, Sonu Nigam</p>
+                    </div>
+                    <i class="bx playListPlay bx-play-circle play-icon" id="4"></i>
+                  </div>
+                  <div class="song-item">
+                    <span class="song-number">05</span>
+                    <img src="./img/5.jpeg" alt="Tere Liye">
+                    <div class="song-info">
+                      <h5>Beete Lamhein</h5>
+                      <p>KK</p>
+                    </div>
+                    <i class="bx playListPlay bx-play-circle play-icon" id="5"></i>
+                  </div>
+                  <div class="song-item">
+                    <span class="song-number">06</span>
+                    <img src="./img/6.jpeg" alt="Tere Liye">
+                    <div class="song-info">
+                      <h5>Bhool Bhulaiyaa</h5>
+                      <p>Pritam</p>
+                    </div>
+                    <i class="bx playListPlay bx-play-circle play-icon" id="6"></i>
+                  </div>
+                  <div class="song-item">
+                    <span class="song-number">07</span>
+                    <img src="./img/7.jpeg" alt="Tere Liye">
+                    <div class="song-info">
+                      <h5>Blue Eyes</h5>
+                      <p>YO YO Honey Singh</p>
+                    </div>
+                    <i class="bx playListPlay bx-play-circle play-icon" id="7"></i>
+                  </div>
+                
+                <div class="song-item">
+                  <span class="song-number">08</span>
+                  <img src="./img/8.jpeg" alt="Ajab Si">
+                  <div class="song-info">
+                    <h5>Call Aundi</h5>
+                    <p>YO YO Honey Singh</p>
+                  </div>
+                  <i class="bx playListPlay bx-play-circle play-icon" id="8"></i>
+                </div>
+                
+                <div class="song-item">
+                  <span class="song-number">09</span>
+                  <img src="./img/9.jpeg" alt="Allah Maaf Kare">
+                  <div class="song-info">
+                    <h5>Dil Diyan Gallan</h5>
+                    <p>Atif Aslam</p>
+                  </div>
+                  <i class="bx playListPlay bx-play-circle play-icon" id="9"></i>
+                </div>
+                
+                <div class="song-item">
+                  <span class="song-number">10</span>
+                  <img src="./img/10.jpeg" alt="Beete Lamhein">
+                  <div class="song-info">
+                    <h5>Dil Ibaadat</h5>
+                    <p>Pritam</p>
+                  </div>
+                  <i class="bx playListPlay bx-play-circle play-icon" id="10"></i>
+                </div>
+                <div class="song-item">
+                    <span class="song-number">11</span>
+                    <img src="./img/11.jpeg" alt="Beete Lamhein">
+                    <div class="song-info">
+                      <h5>Do pal</h5>
+                      <p>Sonu Nigam</p>
+                    </div>
+                    <i class="bx playListPlay bx-play-circle play-icon"id="11"></i>
+                  </div>
+                  <div class="song-item">
+                    <span class="song-number">12</span>
+                    <img src="./img/12.jpeg" alt="Beete Lamhein">
+                    <div class="song-info">
+                      <h5>Gerua</h5>
+                      <p>Pritam</p>
+                    </div>
+                    <i class="bx playListPlay bx-play-circle play-icon" id="12"></i>
+                  </div>
+                  <div class="song-item">
+                    <span class="song-number">13</span>
+                    <img src="./img/13.jpeg" alt="Beete Lamhein">
+                    <div class="song-info">
+                      <h5>Haan Tu Hain</h5>
+                      <p>KK</p>
+                    </div>
+                    <i class="bx playListPlay bx-play-circle play-icon" id="13"></i>
+                  </div>
+                  <div class="song-item">
+                    <span class="song-number">14</span>
+                    <img src="./img/14.jpeg" alt="Beete Lamhein">
+                    <div class="song-info">
+                      <h5>I Am In Love</h5>
+                      <p>Pritam, KK</p>
+                    </div>
+                    <i class="bx playListPlay bx-play-circle play-icon" id="14"></i>
+                  </div>
+                  <div class="song-item">
+                    <span class="song-number">15</span>
+                    <img src="./img/15.jpeg" alt="Beete Lamhein">
+                    <div class="song-info">
+                      <h5>Ishq Bina</h5>
+                      <p>Sonu Nigam</p>
+                    </div>
+                    <i class="bx playListPlay bx-play-circle play-icon"id="15"></i>
+                  </div>
+              </div>
+               <!-- Last Listening -->
+            <div class="song-list lastListening">
+              <p id="last-song-placeholder">No song played yet.</p>
+          </div>
+  
+          <!-- Recommended -->
+          <div class="song-list recommended">
+              <div class="song-item">
+                  <img src="./img/17.jpeg" alt="Call Aundi">
+                  <div class="song-info">
+                      <h5>Jiya</h5>
+                      <p>Arjit Singh</p>
+                  </div>
+                  <i class="bx bx-play-circle play-icon"></i>
+              </div>
+
+              <div class="song-item">
+                <img src="./img/18.jpeg" alt="Call Aundi">
+                <div class="song-info">
+                    <h5>Kabhi Jo Bsadal Barse</h5>
+                    <p>Arjit Singh</p>
+                </div>
+                <i class="bx bx-play-circle play-icon"></i>
+            </div>
+
+            <div class="song-item">
+              <img src="./img/19.jpeg" alt="Call Aundi">
+              <div class="song-info">
+                  <h5>Kahani</h5>
+                  <p>Pritam</p>
+              </div>
+              <i class="bx bx-play-circle play-icon"></i>
+          </div>
+
+          <div class="song-item">
+            <img src="./img/20.jpeg" alt="Call Aundi">
+            <div class="song-info">
+                <h5>Khuda Jaane</h5>
+                <p>KK</p>
+            </div>
+            <i class="bx bx-play-circle play-icon"></i>
+        </div>
+        <div class="song-item">
+          <img src="./img/21.jpeg" alt="Call Aundi">
+          <div class="song-info">
+              <h5>kudi Tu Butter</h5>
+              <p>Yo Yo Honey Singh</p>
+          </div>
+          <i class="bx bx-play-circle play-icon"></i>
+      </div>
+      <div class="song-item">
+        <img src="./img/22.jpeg" alt="Call Aundi">
+        <div class="song-info">
+            <h5>Labon Ko</h5>
+            <p>KK</p>
+        </div>
+        <i class="bx bx-play-circle play-icon"></i>
+    </div>
+    <div class="song-item">
+      <img src="./img/23.jpeg" alt="Call Aundi">
+      <div class="song-info">
+          <h5>Love Dose</h5>
+          <p>Yo Yo Honey Singh</p>
+      </div>
+      <i class="bx bx-play-circle play-icon"></i>
+  </div>
+  <div class="song-item">
+    <img src="./img/24.jpeg" alt="Call Aundi">
+    <div class="song-info">
+        <h5>Main Agar Kahoon</h5>
+        <p>Sonu Nigam</p>
+    </div>
+    <i class="bx bx-play-circle play-icon"></i>
+</div>
+            
+          </div> 
+            </div>    
+        </div>
+ 
+        <div class="songMenu">
+          
+            <div class="music-page">
+                <!-- Header Section -->
+                <header>
+                      <nav>
+                    <button class="filter-btn active" data-tab="all">All</button>
+                    <button class="filter-btn" data-tab="music">Music</button>
+                    <button class="filter-btn" data-tab="podcasts">Podcasts</button>
+                    <button class="filter-btn" data-tab="artist">Artist</button>
+                    <button class="filter-btn" data-tab="album">Album</button>
+                  </nav>
+                </header>        
+          
+                <!-- Playlist Section -->
+               <div class="music-img">
+
+                <!-- Section for Music -->
+    <div class="tab-content music heading ">
+      <h2>Music Playlist</h2>
+      <div class="carousel song-item">
+        <div class="carousel-item"><img src="./img/25.jpeg" alt="Music 1"> <i class="bx playListPlay bx-play-circle play-icon "id="24"></i> <h5>Main Hoon Na<br>  <div class="subtitle">Sonu Nigam</div></h5></div>
+        <div class="carousel-item"><img src="./img/26.jpeg" alt="Music 2"><i class='bx playListPlay bx-play-circle play-icon' id="25"></i>  <h5>Manwa Lage<br>  <div class="subtitle">Arjit Singh</div></h5></div>
+        <div class="carousel-item"><img src="./img/27.jpeg" alt="Music 3"><i class='bx playListPlay bx-play-circle play-icon'id="19"></i>  <h5>Mast Magan <br>  <div class="subtitle">Arjit Singh</div></h5></div>
+        <div class="carousel-item"><img src="./img/28.jpeg" alt="Music 3"><i class='bx playListPlay bx-play-circle play-icon'id="20"></i>  <h5> Mera Pyar Tera Pyar <br>  <div class="subtitle">Arjit Singh</div></h5></div>
+        <div class="carousel-item"><img src="./img/29.jpeg" alt="Music 3"><i class='bx playListPlay bx-play-circle play-icon'id="21"></i>  <h5>Mere Yaara<br>  <div class="subtitle">Arjit Singh</div></h5></div>
+           <div class="carousel-item"><img src="./img/30.jpeg" alt="Music 3"><i class='bx playListPlay bx-play-circle play-icon'id="21"></i>  <h5>Paris Ka Trip<br>  <div class="subtitle">Yo Yo Honey Singh</div></h5></div>
+         
+      </div>
+    </div>
+
+    <!-- Section for Podcasts -->
+    <div class="tab-content podcasts heading">
+      
+      <h2>Podcasts</h2>
+      <div class="carousel song-item">
+        <div class="carousel-item"><img src="./img/63.jpeg" alt="Podcast 1"><i class='bx playListPlay bx-play-circle play-icon'id="63"></i><p>Oh Sinchan!</p></div>
+        <div class="carousel-item"><img src="./img/64.jpeg" alt="Podcast 2"><i class='bx playListPlay bx-play-circle play-icon'id="64"></i><p>Simple PoadCast</p></div>
+        <div class="carousel-item"><img src="./img/65.jpeg" alt="Podcast 3"><i class='bx playListPlay bx-play-circle play-icon'id="65"></i><p>Mahabarat</p></div>
+      </div>
+    </div>
+
+                    <!-- Section for artist -->
+                    <div class="tab-content artist heading">
+                      <h2>Artist</h2>
+                      <div class="carousel">
+                        <div class="carousel-item"><a href="kk.html"><img src="./img/KK.webp" alt="Music 1"><p>KK</p></a></div>
+                        <div class="carousel-item"><a href="sonuNigam.html"><img src="./img/sonu-nigham.jpg" alt="Music 2"><p>Sonu Nigham</p></a></div>
+                        <div class="carousel-item"><a href="arjit.html"><img src="./img/arjit singh.avif" alt="Music 3"><p>Arjit Singh</p></a></div>
+                        <div class="carousel-item"><a href="atifAslam.html"><img src="./img/Atif-Aslam.jpg" alt="Music 3"><p>Atif Aslam</p></a></div>
+                        <div class="carousel-item"><a href="yoyo.html"><img src="./img/heonySingh.webp" alt="Music 3"><p>Honey Singh</p></a></div>
+                        <div class="carousel-item"><a href="himesh.html"><img src="./img/himeshR.jpg" alt="Music 3"><p>Himesh Reshammiya</p></a></div>
+                        <div class="carousel-item"><a href="pritam.html"><img src="./img/Pritam2.webp" alt="Music 3"><p>Pritam</p></a></div>
+                      </div>
+                    </div>
+                
+                    <!-- Section for album -->
+                    <div class="tab-content album heading">
+                      
+                      <h2>Albums</h2>
+                      <div class="carousel">
+                        <div class="carousel-item"><a href="jannat.html"><img src="./img/Tu_Hi_Mera.jpeg" alt="Podcast 1"> <p>Jannat 2</p></a></div>
+                        <div class="carousel-item"><a href="rhtdm.html"><img src="./img/zara zara.jpg" alt="Podcast 2"><p>Rahnaa Hai Tere Dil Mein</p></a></div>
+                        <div class="carousel-item"><a href="loveDose.html"><img src="./img/loveDose.jpg" alt="Podcast 3"><p>Love Dose</p></a></div>
+                      </div>
+                    </div>
+         
+                    <!-- Display to all  -->
+                  <div class="tab-content all active">
+                    <section class="playlists">
+                      <div class="playlist">
+                       <a href="party.html">
+                        <img src="./img/istockphoto-1806011581-1024x1024.jpg" alt="Party Hits">
+                        <p>Party Hindi Hits</p>
+                       </a>
+                      </div>
+                      <div class="playlist">
+                       <a href="liked.html" id="liked-songs" onclick="saveLikedSongs()">
+                        <img src="./img/istockphoto-530361943-1024x1024.jpg" alt="Liked Songs">
+                        <p>Liked Songs</p>
+                        <!-- <ul id="liked-songs-list"></ul> -->
+                       </a>
+                      </div>
+                      <div class="playlist">
+                       <a href="khiladi.html">
+                        <img src="./img/khiladi.webp" alt="Khiladi 786">
+                        <p>Khiladi 786</p>
+                       </a>
+                      </div>
+                      <div class="playlist">
+                       <a href="atifAslam.html">
+                        <img src="./img/Atif-Aslam.jpg" alt="The Killer">
+                        <p>Atif Aslam</p>
+                       </a>
+                      </div>
+                      <div class="playlist">
+                       <a href="himesh.html">
+                        <img src="./img/himeshR.jpg" alt="Himesh">
+                        <p>Himesh Reshammiya</p>
+                       </a>
+                      </div>
+                    </section>
+                
+                    <!-- Made For You Section -->
+                    <section class="made-for-you">
+                      <div class="section-header ">
+                        <h2>Made For YOU</h2>
+                        <!-- <a href="#" class="show-all">Show all</a> -->
+                      </div>
+                      <div class="mixes">
+                        <div class="mix">
+                         <a href="pritam.html">
+                          <img src="./img/Pritam2.webp" alt="Daily Mix 1">
+                          <p>Daily Mix 1</p>
+                          <span style="color: #fff;"> Pritam</span>
+                         </a>
+                        </div>
+                        <div class="mix">
+                          <a href="kk.html">
+                            <img src="./img/KK.webp" alt="Daily Mix 2">
+                          <p>Daily Mix 2</p>
+                          <span>KK</span>
+                          </a>
+                        </div>
+                        <div class="mix">
+                         <a href="arjit.html">
+                          <img src="./img/arjit singh.avif" alt="Daily Mix 3">
+                          <p>Daily Mix 3</p>
+                          <span>Arjit Singh</span>
+                         </a>
+                        </div>
+                        
+                      </div>
+                    </section>
+                  </div>
+                   <hr>
+                  <footer>
+                    <article class="first">
+                    <a href="aboutus.html">About Us</a> |
+                     <a href="contact.html">Contact Us</a>
+                    </article>
+                    <article class="second">
+                    <a href="https://www.instagram.com/">  <i class='bx bxl-instagram-alt' ></i></a>
+                     <a href="https://www.youtube.com/"> <i class='bx bxl-youtube'></i></a>
+                   <a href="https://www.facebook.com/">   <i class='bx bxl-facebook'></i></a>
+
+                    </article>
+                  </footer>
+                  <hr class="hr1">
+               </div>
+              </div>
+            
+              <!-- Display Songs code -->
+        </div>
+        <div class="songDisplay">  
+           
+                    <div class="song-info">
+                        <img src="./img/16.jpeg" alt="" id="poster_master_play">
+                        <div class="description">
+                          <h5 id="title">Jeene Laga Hoon <div class="subtitle">Atif Aslam</div></h5>
+                        </div>
+                     <div class="progress">
+                        <p> <span id="currentTime">0:00</span></p>
+                        <div class="progress-bar-container" id="progressContainer">
+                          <div class="progress-bar" id="progress"></div>
+                        </div>
+                        <!-- <div class="active-line" id="progress"></div>
+                        <div class="deactive-line"></div> -->
+                        <p> <span id="duration">0:00</span></p>
+                    </div>
+                    </div>
+                
+                <div class="player-actions">
+                    <div class="buttons">
+                        <!-- <i class='bx bx-repeat'></i> -->
+                    
+                          <i class='bx bx-heart heart-icon' style="font-size: 25px;" id="likebtn"></i>
+                        <i class='bx bx-first-page'id="prev" style="font-size: 25px;"></i>
+                        <i class='bx bxs-right-arrow play-button' id="masterPlay" style="font-size: 25px;" data-id="9"></i>
+                        <i class='bx bx-last-page' id="next" style="font-size: 25px;"></i>
+                      <a href="" id="download-music">  <i class='bx bxs-cloud-download' style="font-size: 25px; color: #fff;"></i></a>
+                        <!-- <i class='bx bx-transfer-alt'></i> -->
+                    </div>
+                </div>
+        </div>
+ </div>
+
+
+
+    </div>
+    <script src="script2.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liked Songs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #444;
+        }
+        th {
+            background-color: #1f1f1f;
+        }
+        img {
+            width: 50px;
+            height: 50px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #1db954;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1ed760;
+        }
+        #audioPlayer {
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Liked Songs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="likedSongsTable">
+            <!-- Rows will be dynamically populated here -->
+        </tbody>
+    </table>
+    <audio id="audioPlayer" controls style="display:none;"></audio>
+
+    <script>
+let likedSongs = []; // Array to store liked songs
+
+// Function to handle liking a song
+function likeSong(event) {
+    // Find the parent song-item element
+    const songItem = event.target.closest(".song-item");
+
+    // Extract song details
+    const songTitle = songItem.querySelector("h5").innerText;
+    const songArtist = songItem.querySelector("p").innerText;
+    const songImage = songItem.querySelector("img").src;
+
+    // Check if the song is already liked
+    const isAlreadyLiked = likedSongs.some((song) => song.title === songTitle && song.artist === songArtist);
+
+    if (!isAlreadyLiked) {
+        // Add song to likedSongs
+        likedSongs.push({ title: songTitle, artist: songArtist, img: songImage });
+
+        // Save to local storage
+        localStorage.setItem("likedSongs", JSON.stringify(likedSongs));
+
+        console.log(`Liked song: ${songTitle} by ${songArtist}`);
+    } else {
+        console.log("Song is already liked.");
+    }
+}
+
+// Restore liked songs on page load
+window.addEventListener("DOMContentLoaded", () => {
+    const storedLikedSongs = JSON.parse(localStorage.getItem("likedSongs"));
+    if (storedLikedSongs) {
+        likedSongs = storedLikedSongs;
+        console.log("Liked songs restored:", likedSongs);
+    }
+});
+
+// Add event listener for the heart icon using delegation
+document.querySelector(".song-list-container").addEventListener("click", (e) => {
+    if (e.target.classList.contains("heart-icon")) {
+        likeSong(e);
+    }
+});
+
+// Adding heart icon to song items dynamically
+songs.forEach((song, index) => {
+    const songItem = document.createElement("div");
+    songItem.classList.add("song-item");
+    songItem.innerHTML = `
+        <img src="${song.img}" alt="${song.title}">
+        <div>
+            <h5>${song.title}</h5>
+            <p>${song.artist}</p>
+        </div>
+        <button class="play-icon" data-index="${index}">▶</button>
+        <button class="heart-icon" data-index="${index}">♥</button> <!-- Heart Icon -->
+    `;
+
+    // Append the song item to the song list container
+    document.querySelector(".song-list-container").appendChild(songItem);
+});
+
+        
+    </script>
+</body>
+</html>

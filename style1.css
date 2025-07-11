@@ -1,0 +1,43 @@
+.albums{
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    padding-left: 200px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.albums img{
+    position: relative;
+    top: -650px;
+    left: -51px;
+}
+
+.albums button{
+    background-color: black;
+    color: #fff;
+    position: relative;
+    top: -570px;
+    left: -680px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+
+.progress-bar-container {
+    margin: 15px 0;
+    background: #5fc7c0;
+    height: 5px;
+    width: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress-bar {
+    height: 80%;
+    background: white;
+    width: 0;
+    border-radius: 5px;
+}

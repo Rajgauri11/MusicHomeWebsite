@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Music Home</title>
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+   <style>
+    /* styles.css */
+
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  /* background-color: #121212; */
+  color: #ffffff;
+}
+
+.about-section {
+    height: 450px;
+  padding: 50px;
+  background: linear-gradient(135deg, #e96bb9, #191414);
+  color: #ffffff;
+}
+
+.about-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #1db954;
+  text-transform: uppercase;
+}
+
+.about-container p {
+  font-size: 1.2rem;
+  margin: 15px 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.about-container p.visible {
+  opacity: 1;
+}
+
+.about-container .highlight {
+  color: #1db954;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn {
+  background-color: #1db954;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #17a74e;
+}
+
+   </style>
+</head>
+<body>
+  <section class="about-section">
+    <div class="about-container" id="aboutContainer">
+      <h1>About Us</h1>
+      <p>
+        Welcome to <span class="highlight">Music Home</span>, your personalized gateway to a world of rhythm, melody, and endless entertainment!
+      </p>
+      <p>
+        At Music Home, we believe music is more than just sound—it's a feeling, a memory, and an escape.
+      </p>
+      <button id="toggleDetails" class="btn">Read More</button>
+      <p id="extraDetails" class="hidden">
+        Our platform is designed to cater to every music lover, offering a seamless and immersive experience for exploring, streaming, and enjoying your favorite tracks. With personalized playlists, curated recommendations, and a sleek interface, Music Home ensures your listening experience is always on point.
+      </p>
+    </div>
+  </section>
+
+  <script>// script.js
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const aboutContainer = document.getElementById('aboutContainer');
+      const toggleDetailsButton = document.getElementById('toggleDetails');
+      const extraDetails = document.getElementById('extraDetails');
+      
+      // Fade-in effect for paragraphs
+      const paragraphs = aboutContainer.querySelectorAll('p');
+      paragraphs.forEach((p, index) => {
+        setTimeout(() => {
+          p.classList.add('visible');
+        }, index * 300); // Delay each paragraph's fade-in
+      });
+    
+      // Toggle extra details visibility
+      toggleDetailsButton.addEventListener('click', () => {
+        if (extraDetails.classList.contains('hidden')) {
+          extraDetails.classList.remove('hidden');
+          toggleDetailsButton.textContent = 'Read Less';
+        } else {
+          extraDetails.classList.add('hidden');
+          toggleDetailsButton.textContent = 'Read More';
+        }
+      });
+    });
+    </script>
+</body>
+</html>

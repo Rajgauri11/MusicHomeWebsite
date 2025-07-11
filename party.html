@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Playlist</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .player-container {
+            background-color: #800080;
+            border-radius: 15px;
+            width: 600px;
+            padding: 20px;
+            margin-top: 100px;
+        }
+
+        .player-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .player-header img {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            
+        }
+
+        .player-header .info {
+            flex: 1;
+            margin-left: 15px;
+        }
+
+        .player-header .info h2 {
+            font-size: 22px;
+        }
+
+        .player-header .info p {
+            margin: 5px 0 0;
+            color: lightgray;
+            font-size: 14px;
+        }
+
+        .progress-bar-container {
+            margin: 15px 0;
+            background: #4a004a;
+            height: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 80%;
+            background: white;
+            width: 0;
+            border-radius: 5px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .controls button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .playlist {
+            margin-top: 20px;
+        }
+
+        .playlist-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.3s;
+            cursor: pointer;
+            padding: 5px;
+            
+        }
+
+        .playlist-item.active {
+            background: #4a004a;
+        }
+
+        .playlist-item span {
+            font-size: 14px;
+            color: lightgray;
+        }
+
+        .playlist-item:hover {
+            background: #660066;
+        }
+
+        .info button{
+    position: relative;
+    top: 10px;
+    right: -340px;
+    background-color: black;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 20px;
+}
+    </style>
+</head>
+<body>
+    <div class="player-container">
+        <div class="player-header">
+            <img src="./img/istockphoto-1806011581-1024x1024.jpg" alt="Album Cover">
+            <div class="info">
+                <a href="index.html"><button>Back</button></a>
+                <h2 >Party Hindi Hits | New Dance Songs</h2>
+                <p>music.maaniac</p>
+                <br><br><br><br>
+                <div class="progress-bar-container" id="progressContainer">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="controls">
+                    <i class='bx bx-first-page'id="prevButton" style="font-size: 25px;"></i>
+                        <i class='bx bxs-right-arrow play-button' id="playPauseButton" style="font-size: 25px;"></i>
+                        <i class='bx bx-last-page' id="nextButton"style="font-size:25px" ></i>
+                    <!-- <button >⏮</button>
+                    <button >▶️</button> -->
+                    <!-- <button >⏭</button> -->
+                </div>
+            </div>
+        </div>
+       
+        <div class="playlist">
+            <div class="playlist-item" data-index="0">
+                <p>1. Love Dose</p>
+                <span>03:50</span>
+            </div>
+            
+            <div class="playlist-item" data-index="1">
+                <p>2. Party With Bhoothnath</p>
+                <span>03:27</span>
+            </div>
+            
+            <div class="playlist-item" data-index="2">
+                <p>3. Kabhi Jo Baadal Barse </p>
+                <span>02:51</span>
+            </div>
+
+            <div class="playlist-item" data-index="3">
+                <p>4. Blue Eyes</p>
+                <span>02:51</span>
+            </div>
+            <div class="playlist-item" data-index="4">
+                <p>5. Allah Maaf Kare</p>
+                <span>02:51</span>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+
+    <script>
+        const songs = [
+            { title: "Love Dose", src: "audio/23.mp3", duration: "03:50" },
+            { title: "Party With Bhootnath", src: "audio/31.mp3", duration: "03:27" },
+            { title: "Kabhi Jo Badal Barse", src: "audio/18.mp3", duration: "02:51" },
+            { title: "Blue Eyes", src: "audio/7.mp3", duration: "03:27" },
+            { title: "Allah Maaf Kare", src: "audio/4.mp3", duration: "02:51" }
+        ];
+
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playPauseButton = document.getElementById('playPauseButton');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+        const progressBar = document.getElementById('progressBar');
+        const progressContainer = document.getElementById('progressContainer');
+        const playlistItems = document.querySelectorAll('.playlist-item');
+
+        let currentIndex = 0;
+        let isPlaying = false;
+
+        function loadSong(index) {
+            const song = songs[index];
+            audioPlayer.src = song.src;
+            highlightActiveSong(index);
+        }
+
+        function playSong() {
+            audioPlayer.play();
+            isPlaying = true;
+            playPauseButton.classList.remove('bxs-right-arrow');
+            playPauseButton.classList.add('bx-pause-circle');
+        }
+
+        function pauseSong() {
+            audioPlayer.pause();
+            isPlaying = false;
+            playPauseButton.classList.add('bxs-right-arrow');
+            playPauseButton.classList.remove('bx-pause-circle');
+        }
+
+        function togglePlayPause() {
+            isPlaying ? pauseSong() : playSong();
+        }
+
+        function nextSong() {
+            currentIndex = (currentIndex + 1) % songs.length;
+            loadSong(currentIndex);
+            playSong();
+        }
+
+        function prevSong() {
+            currentIndex = (currentIndex - 1 + songs.length) % songs.length;
+            loadSong(currentIndex);
+            playSong();
+        }
+
+        function highlightActiveSong(index) {
+            playlistItems.forEach((item, idx) => {
+                item.classList.toggle('active', idx === index);
+            });
+        }
+
+        function updateProgressBar() {
+            const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            progressBar.style.width = `${percent}%`;
+        }
+
+        function setProgress(e) {
+            const width = progressContainer.offsetWidth;
+            const clickX = e.offsetX;
+            audioPlayer.currentTime = (clickX / width) * audioPlayer.duration;
+        }
+
+        playlistItems.forEach((item) => {
+            item.addEventListener('click', (e) => {
+                const index = parseInt(item.getAttribute('data-index'), 10);
+                currentIndex = index;
+                loadSong(currentIndex);
+                playSong();
+            });
+        });
+
+        playPauseButton.addEventListener('click', togglePlayPause);
+        nextButton.addEventListener('click', nextSong);
+        prevButton.addEventListener('click', prevSong);
+        audioPlayer.addEventListener('timeupdate', updateProgressBar);
+        audioPlayer.addEventListener('ended', nextSong);
+        progressContainer.addEventListener('click', setProgress);
+
+        loadSong(currentIndex);
+    </script>
+</body>
+</html>
+
